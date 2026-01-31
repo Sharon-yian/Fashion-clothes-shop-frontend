@@ -1,0 +1,164 @@
+/* Order History Container */
+.order-history-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Table Styles */
+.order-history-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-history-container thead {
+  background-color: #f3f4f6;
+}
+
+.order-history-container th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-history-container td {
+  padding: 14px 16px;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-history-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.order-history-container tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-processing {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-shipped {
+  background-color: #c7d2fe;
+  color: #4338ca;
+}
+
+.status-delivered {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-cancelled {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-refunded {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .order-history-container {
+    padding: 15px;
+  }
+
+  .order-history-container table {
+    font-size: 0.9rem;
+  }
+
+  .order-history-container th,
+  .order-history-container td {
+    padding: 10px;
+  }
+
+  .order-history-container .status-badge {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Loading and Error States */
+.alert {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-left: 4px solid #b91c1c;
+}
+
+.alert-success {
+  background-color: #dcfce7;
+  color: #15803d;
+  border-left: 4px solid #15803d;
+}
+
+/* Page Header */
+.order-history-container h1 {
+  color: #111827;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Print Styles */
+@media print {
+  .order-history-container {
+    background-color: white;
+    padding: 0;
+  }
+
+  .order-history-container table {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+
+  .status-badge {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
