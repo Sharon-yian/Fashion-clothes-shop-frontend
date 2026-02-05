@@ -1,15 +1,22 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Header from './components/Header';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import SelectRole from './pages/SelectRole';
-import Auth from './pages/Auth';
-import ProtectedRoute from './components/ProtectedRoute';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import SelectRole from "./pages/SelectRole";
+import Auth from "./pages/Auth";
+import ProtectedRoute from "./components/ProtectedRoute";
+import CartPage from "./components/CartPage";
+import CheckoutPage from "./components/CheckoutPage";
+import ConfirmationPage from "./components/ConfirmationPage";
+import "./App.css";
 
 function App() {
-  
   const reduxUser = useSelector((state) => state.auth.user);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const user = reduxUser || storedUser;
@@ -20,7 +27,6 @@ function App() {
         <Header />
         <main>
           <Routes>
-            
             <Route
               path="/"
               element={
@@ -28,15 +34,13 @@ function App() {
               }
             />
 
-          
             <Route path="/select-role" element={<SelectRole />} />
             <Route path="/auth" element={<Auth />} />
 
-            
             <Route
               path="/home"
               element={
-                <ProtectedRoute allowedRoles={['customer', 'admin']}>
+                <ProtectedRoute allowedRoles={["customer", "admin"]}>
                   <Home />
                 </ProtectedRoute>
               }
@@ -44,12 +48,35 @@ function App() {
             <Route
               path="/products"
               element={
-                <ProtectedRoute allowedRoles={['customer', 'admin']}>
+                <ProtectedRoute allowedRoles={["customer", "admin"]}>
                   <Products />
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute allowedRoles={["customer", "admin"]}>
+                  <CartPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <ProtectedRoute allowedRoles={["customer", "admin"]}>
+                  <CheckoutPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/confirmation"
+              element={
+                <ProtectedRoute allowedRoles={["customer", "admin"]}>
+                  <ConfirmationPage />
+                </ProtectedRoute>
+              }
+            />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../slices/authSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"; 
 import "./Header.css"; 
 
 const Header = () => {
@@ -26,9 +28,12 @@ const Header = () => {
       <nav className="nav-links">
         <Link className="nav-item" to="/home">Home</Link>
         <Link className="nav-item" to="/products">Products</Link>
+        <Link className="nav-item" to="/cart">
+          <FontAwesomeIcon icon={faShoppingCart} /> Cart
+        </Link>
         {user && (
           <button className="logout-btn" onClick={handleLogout}>
-            Logout
+            <FontAwesomeIcon icon={faRightFromBracket} /> Logout
           </button>
         )}
       </nav>
