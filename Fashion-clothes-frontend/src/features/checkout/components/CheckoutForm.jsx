@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShippingAddress, setBillingAddress, setCurrentStep } from '../checkoutSlice';
+import PaymentForm from './PaymentForm';
 
 const CheckoutForm = ({ onNext }) => {
   const dispatch = useDispatch();
-  const { shippingAddress, billingAddress } = useSelector(state => state.checkout);
+  const { shippingAddress, billingAddress, currentStep } = useSelector(state => state.checkout);
+  const { total } = useSelector(state => state.cart);
   
   const [formData, setFormData] = useState({
     shipping: shippingAddress,
@@ -23,9 +25,17 @@ const CheckoutForm = ({ onNext }) => {
     e.preventDefault();
     dispatch(setShippingAddress(formData.shipping));
     dispatch(setBillingAddress(formData.sameAsShipping ? formData.shipping : formData.billing));
+    dispatch(setCurrentStep('payment'));
+  };
+
+  const handlePaymentNext = () => {
     dispatch(setCurrentStep('review'));
     onNext();
   };
+
+  if (currentStep === 'payment') {
+    return <PaymentForm onNext={handlePaymentNext} total={total} />;
+  }
 
   return (
     <form onSubmit={handleSubmit} className="checkout-form">
@@ -92,7 +102,7 @@ const CheckoutForm = ({ onNext }) => {
         )}
       </div>
 
-      <button type="submit">Continue to Review</button>
+      <button type="submit">Continue to Payment</button>
     </form>
   );
 };
