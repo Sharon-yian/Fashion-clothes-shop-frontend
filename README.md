@@ -9,36 +9,28 @@ A modern React-based e-commerce frontend for a fashion and clothing store, built
 - **Product Catalog**: Browse fashion items by categories (Men, Women, Kids, Accessories)
 - **Shopping Cart**: Add, remove, and manage items in cart
 - **Checkout Process**: Complete order with shipping and payment information
-- **Payment Simulation**: Internal payment processing with invoice generation
+- **Payment Integration**: M-Pesa payment processing
 
 ### Technical Stack
 - **Frontend**: React 19 + Vite
 - **State Management**: Redux Toolkit
 - **Routing**: React Router DOM
-- **HTTP Client**: Axios
-- **Styling**: CSS3 with responsive design
+- **Styling**: Tailwind CSS
+- **Forms**: React Hook Form
+- **Notifications**: React Hot Toast
 
 ## Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── Header.jsx      # Navigation header
-│   └── ProductCard.jsx # Product display card
-├── pages/              # Page components
-│   ├── Home.jsx        # Landing page
-│   ├── Login.jsx       # User login
-│   ├── Register.jsx    # User registration
-│   ├── Products.jsx    # Product catalog
-│   ├── Cart.jsx        # Shopping cart
-│   └── Checkout.jsx    # Order checkout
-├── slices/             # Redux slices
-│   ├── authSlice.js    # Authentication state
-│   ├── productsSlice.js # Products state
-│   └── cartSlice.js    # Cart state
-├── store/              # Redux store configuration
-├── utils/              # Utility functions
-└── App.jsx             # Main application component
+├── features/           # Feature-based modules
+│   ├── auth/          # Authentication
+│   ├── cart/          # Shopping cart
+│   ├── checkout/      # Checkout process
+│   └── products/      # Product catalog
+├── store/             # Redux store configuration
+├── App.jsx            # Main application component
+└── main.jsx           # Application entry point
 ```
 
 ## Getting Started
@@ -49,17 +41,22 @@ src/
 
 ### Installation
 
-1. Install dependencies:
+1. Navigate to project directory:
+```bash
+cd Fashion-clothes-frontend
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Start the development server:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-3. Open your browser and navigate to `http://localhost:5173`
+4. Open your browser and navigate to `http://localhost:5173`
 
 ### Available Scripts
 
@@ -70,18 +67,6 @@ npm run dev
 
 ## Features Overview
 
-### Authentication
-- User registration with form validation
-- Login with email and password
-- JWT token storage in localStorage
-- Protected routes for authenticated users
-
-### Product Management
-- Category-based product filtering
-- Responsive product grid layout
-- Product details display
-- Add to cart functionality
-
 ### Shopping Cart
 - Add/remove items
 - Quantity management
@@ -90,28 +75,25 @@ npm run dev
 
 ### Checkout Process
 - Shipping address form
-- Payment information collection
+- M-Pesa payment integration
 - Order summary display
-- Invoice generation and storage
+- Payment confirmation
 
-## Backend Integration
+### Payment Integration
+- M-Pesa STK Push
+- Phone number validation
+- Payment status tracking
+- Error handling
 
-The frontend is designed to work with a Flask backend API. Update the `API_BASE_URL` in `src/utils/api.js` to match your backend server.
+## Tech Stack
 
-Expected API endpoints:
-- `POST /api/auth/login` - User login
-- `POST /api/auth/register` - User registration
-- `GET /api/products` - Get all products
-- `GET /api/products?category=<category>` - Get products by category
-- `POST /api/orders` - Create new order
-- `GET /api/orders/my` - Get user's orders
-
-## Mobile Responsiveness
-
-The application is fully responsive and optimized for:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
+- React 19
+- Redux Toolkit
+- React Router DOM
+- Tailwind CSS
+- Vite
+- React Hook Form
+- React Hot Toast
 
 ## Contributing
 
